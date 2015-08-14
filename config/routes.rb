@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root to: 'home#home'
+  resources :mutants
+  root to: 'mutants#index'
 end

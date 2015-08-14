@@ -6,7 +6,6 @@ RSpec.describe Mutant, type: :model do
 
   it { is_expected.to be_valid }
   it { is_expected.to respond_to :name }
-  it { is_expected.to respond_to :capability }
 
   it 'is valid when built from parameters' do
     m = FactoryGirl.build(:mutant)
@@ -16,10 +15,6 @@ RSpec.describe Mutant, type: :model do
 
   it 'is invalid without a name' do
     expect(FactoryGirl.build(:mutant, name: nil)).not_to be_valid
-  end
-
-  it 'is valid without a capability' do
-    expect(FactoryGirl.build(:mutant, capability: nil)).to be_valid
   end
 
   it 'is invalid with duplicated name' do

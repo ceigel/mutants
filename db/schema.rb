@@ -15,9 +15,10 @@ ActiveRecord::Schema.define(version: 20150813113124) do
 
   create_table "mutants", force: :cascade do |t|
     t.string   "name"
-    t.string   "capability"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "mutants", ["name"], name: "index_mutants_on_name"
 
 end
