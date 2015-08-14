@@ -25,6 +25,9 @@ module Xavier
     config.generators do |g|
       g.stylesheets false
       g.javascripts false
+      g.helpers false
+      g.request_specs false
+      g.routing_specs false
     end
   end
 end
