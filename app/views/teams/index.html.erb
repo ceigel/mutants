@@ -1,21 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Mutants</h1>
+<h1>Teams</h1>
 
 <table class="table table-striped table-condensed">
   <thead>
     <tr>
       <th>Name</th>
-      <th ></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @mutants.each do |mutant| %>
+    <% @teams.each do |team| %>
       <tr>
-        <td><%= link_to mutant.name, mutant %></td>
+        <td><%= link_to team.name, team %></td>
         <td class='text-right'>
-          <%= table_button_links(mutant) %>
+          <%= table_button_links(team) %>
         </td>
       </tr>
     <% end %>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= new_button_link Mutant %>
+<%= new_button_link Team %>
