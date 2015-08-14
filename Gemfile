@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form'
 gem 'factory_girl_rails'
 gem 'responders'
+gem 'capybara'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
