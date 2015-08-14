@@ -11,14 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814094814) do
+ActiveRecord::Schema.define(version: 20150814113422) do
 
   create_table "mutants", force: :cascade do |t|
     t.string   "name"
-    t.string   "capability"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "mutants", ["name"], name: "index_mutants_on_name"
+
+  create_table "mutants_teams", id: false, force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "mutant_id"
+  end
+
+  add_index "mutants_teams", ["mutant_id"], name: "index_mutants_teams_on_mutant_id"
+  add_index "mutants_teams", ["team_id"], name: "index_mutants_teams_on_team_id"
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"

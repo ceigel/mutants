@@ -6,6 +6,7 @@ RSpec.describe Mutant, type: :model do
 
   it { is_expected.to be_valid }
   it { is_expected.to respond_to :name }
+  it { is_expected.to respond_to :teams }
 
   it 'is valid when built from parameters' do
     m = FactoryGirl.build(:mutant)
@@ -19,5 +20,23 @@ RSpec.describe Mutant, type: :model do
 
   it 'is invalid with duplicated name' do
     expect(FactoryGirl.build(:mutant, name: mutant.name)).not_to be_valid
+  end
+
+  describe 'team relationship' do
+    let(:team) { FactoryGirl.create(:team) }
+    before do
+      team.mutants << mutant
+      mutant.reload
+    end
+
+    it 'can be added to a team' do
+      expect(mutant.teams).to eq [team]
+    end
+
+    it 'can be removed from a team' do
+      team.mutants.delete(mutant)
+      mutant.reload
+      expect(mutant.teams).to be_empty
+    end
   end
 end

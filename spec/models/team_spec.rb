@@ -20,4 +20,22 @@ RSpec.describe Team, type: :model do
   it 'is invalid with duplicated name' do
     expect(FactoryGirl.build(:team, name: team.name)).not_to be_valid
   end
+
+  describe 'mutant relationship' do
+    let(:mutant) { FactoryGirl.create(:mutant) }
+    before do
+      mutant.teams << team
+      team.reload
+    end
+
+    it 'can be added to a team' do
+      expect(team.mutants).to eq [mutant]
+    end
+
+    it 'can be removed from a team' do
+      mutant.teams.delete(team)
+      team.reload
+      expect(team.mutants).to be_empty
+    end
+  end
 end
