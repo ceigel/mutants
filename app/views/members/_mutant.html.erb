@@ -1,0 +1,6 @@
+<%= content_tag :tr, id: dom_id(mutant) do %>
+  <td><%= mutant.name %></td>
+  <td class='text-right'>
+    <%= link_creator.call(mutant)  %>
+  </td>
+<% end %>
