@@ -22,6 +22,11 @@ RSpec.describe Mutant, type: :model do
     expect(FactoryGirl.build(:mutant, name: mutant.name)).not_to be_valid
   end
 
+  it 'is invalid with duplicated name case insensitive' do
+    expect(FactoryGirl.build(:mutant, name: mutant.name.upcase)).not_to be_valid
+  end
+
+
   describe 'team relationship' do
     let(:team) { FactoryGirl.create(:team) }
     before do
