@@ -6,6 +6,8 @@ RSpec.describe Team, type: :model do
 
   it { is_expected.to be_valid }
   it { is_expected.to respond_to :name }
+  it { is_expected.to respond_to :tasks }
+  it { is_expected.to respond_to :mutants }
 
   it 'is valid when built from parameters' do
     m = FactoryGirl.build(:team)
