@@ -1,8 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
+<div class='row'>
+  <div class='col-sm-3'>
+    <h2>
+      <strong>Team:</strong>
+      <%= @team.name %>
+    </h2>
+    <%= show_page_bottom_links(@team) %>
+  </div>
 
-<%= show_page_bottom_links(@team) %>
+  <%= render "tasks_list" %>
+  </div>
+
+</div>

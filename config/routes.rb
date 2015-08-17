@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :teams
+  resources :teams do
+    resources :tasks, except: [:index, :show]
+  end
+
   resources :mutants
   root to: 'mutants#index'
 end
