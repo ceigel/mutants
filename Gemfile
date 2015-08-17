@@ -15,6 +15,7 @@ gem 'responders'
 gem 'capybara'
 
 group :development, :test do
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
