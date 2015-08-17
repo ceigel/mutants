@@ -13,6 +13,8 @@ gem 'simple_form'
 gem 'factory_girl_rails'
 gem 'responders'
 gem 'capybara'
+gem 'devise'
+gem 'cancan'
 
 group :development, :test do
   gem 'pry-rails'
