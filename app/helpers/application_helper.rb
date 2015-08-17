@@ -5,8 +5,9 @@ module ApplicationHelper
   end
 
   def back_button_link(model_class)
+    name = content_tag(:span, '', class: "glyphicon glyphicon-chevron-left")
     tag('br') +
-      button_link('Back', polymorphic_path(model_class), 'btn-danger')
+      button_link(name, polymorphic_path(model_class), 'btn-danger')
   end
 
   def edit_page_bottom_links(model)
@@ -35,7 +36,8 @@ module ApplicationHelper
 
   private
     def edit_button_link(model, *parents)
-      button_link('Edit', edit_polymorphic_path([*parents, model]), 'btn-success')
+      name = content_tag(:span, '', class: "glyphicon glyphicon-pencil")
+      button_link(name, edit_polymorphic_path([*parents, model]), 'btn-success')
     end
 
     def show_button_link(model)
@@ -43,6 +45,7 @@ module ApplicationHelper
     end
 
     def destroy_button_link(model, *parents)
-      button_link('Destroy', [*parents, model], 'btn-danger', method: :delete, data: { confirm: 'Are you sure?' })
+      name = content_tag(:span, '', class: "glyphicon glyphicon-trash")
+      button_link(name, [*parents, model], 'btn-danger', method: :delete, data: { confirm: 'Are you sure?' })
     end
 end
