@@ -1,3 +1,2 @@
 $("#<%= dom_id(@member) %>").remove();
-<% link_creator = @table_to_add == 'non_members' ? create_add_links(@team) : create_remove_links(@team) %>
-$("[data-type='<%= @table_to_add %>']").append('<%= escape_javascript(render partial: 'mutant', locals: {mutant: @member, link_creator: link_creator}) %>');
+$("[data-type='<%= @table_to_add %>']").append('<%= escape_javascript(render partial: 'mutant', locals: {mutant: @member, link_creator: @link_creator}) %>');
