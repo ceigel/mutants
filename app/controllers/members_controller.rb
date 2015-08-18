@@ -2,6 +2,7 @@ class MembersController < ApplicationController
   include MembersHelper
   include ApplicationHelper
   include ActionView::Helpers::UrlHelper
+  before_filter :authenticate_mutant!
 
   before_action :set_team
   respond_to :html, :js

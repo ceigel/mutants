@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_filter :authenticate_mutant!
   before_action :set_team
   before_action :set_task, only: [:edit, :update, :destroy]
 

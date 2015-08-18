@@ -1,4 +1,5 @@
 class MutantsController < ApplicationController
+  before_filter :authenticate_mutant!
   before_action :set_mutant, only: [:show, :edit, :update, :destroy]
 
   respond_to :html

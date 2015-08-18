@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
-
   devise_for :mutants
-  resources :teams do
-    resources :tasks, except: [:index, :show]
-    resources :members, only: [:create, :destroy] do
-      get 'edit', on: :collection
-    end
+
+  unauthenticated do
+    root :to => redirect('/mutants/sign_in')
   end
 
-  resources :mutants, except: [:create, :new]
-  root to: 'mutants#index'
+  authenticated :mutant do
+    resources :teams do
+      resources :tasks, except: [:index, :show]
+      resources :members, only: [:create, :destroy] do
+        get 'edit', on: :collection
+      end
+    end
+
+    resources :mutants, except: [:create, :new]
+    root to: 'mutants#index', :as => :user_root
+  end
 end

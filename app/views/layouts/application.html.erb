@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Xavier</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<%= render "layouts/navigation_links" %>
-  <div class="container">
-    <%= yield %>
-  </div>
-
-</body>
+  <head>
+    <title>Xavier</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <%= render "layouts/navigation_links" %>
+    </header>
+    <div class="container">
+      <div id='mesasges'>
+        <%= render 'layouts/messages' %>
+      </div>
+      <div id='content'>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
 </html>
