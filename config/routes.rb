@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :mutants
   resources :teams do
     resources :tasks, except: [:index, :show]
     resources :members, only: [:create, :destroy] do
@@ -7,6 +8,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :mutants
+  resources :mutants, except: [:create, :new]
   root to: 'mutants#index'
 end

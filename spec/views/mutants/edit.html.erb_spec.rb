@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "mutants/edit", type: :view do
   before(:each) do
-    @mutant = assign(:mutant, Mutant.create!(
-      :name => "Xavier",
-    ))
+    @mutant = assign(:mutant, FactoryGirl.create(:mutant, :name => "xavier"))
   end
   it "renders the edit mutant form" do
     render
