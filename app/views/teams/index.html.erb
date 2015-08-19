@@ -1,6 +1,6 @@
 <h1>Teams</h1>
 
-<%= render "teams_list" %>
+<%= render partial: "teams_list", locals: {teams: @teams} %>
 <br>
 
 <%= new_button_link Team %>

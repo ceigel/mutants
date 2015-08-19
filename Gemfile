@@ -17,11 +17,16 @@ gem 'cancan'
 gem 'pg'
 
 group :development, :test do
-  gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0'
-  gem 'byebug'
   gem 'web-console', '~> 2.0'
+  gem 'launchy'
+end
+
+group :development do
   gem 'spring'
+  gem 'byebug'
+  gem 'pry-rails'
+  gem 'guard-rspec', require: false
 end
 
 group :production do

@@ -12,8 +12,6 @@ class MutantsController < ApplicationController
 
   def home
     @mutant = current_mutant
-    @teams = @mutant.teams
-    @tasks = @mutant.tasks
   end
 
   def edit

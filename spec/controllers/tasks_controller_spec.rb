@@ -116,7 +116,7 @@ RSpec.describe TasksController, type: :controller do
       it "redirects to the parent team" do
         task = team.tasks.create! valid_attributes
         delete :destroy, :id => task.to_param, :team_id => team.to_param
-        expect(response).to redirect_to(team_url)
+        expect(response).to redirect_to(team)
       end
     end
   end

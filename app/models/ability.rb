@@ -10,6 +10,7 @@ class Ability
     else
       can :edit, :members_list
       can :read, :all
+      can :home, Mutant
     end
     #
     # The first argument to `can` is the action you are giving the user 
