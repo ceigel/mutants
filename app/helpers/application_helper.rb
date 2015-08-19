@@ -5,15 +5,15 @@ module ApplicationHelper
     button_link("New #{model_name.name}", new_polymorphic_path(model_name.element), 'btn-info')
   end
 
-  def back_button_link
+  def back_button_link(model)
     name = content_tag(:span, '', class: "glyphicon glyphicon-chevron-left")
     tag('br') +
-      button_link(name, :back, 'btn-danger')
+      button_link(name, model, 'btn-danger')
   end
 
   def edit_page_bottom_links(model)
     out = tag('br')
-    out << back_button_link
+    out << back_button_link(model.class)
     out << " "
     out << show_button_link(model)
     return out
@@ -21,7 +21,7 @@ module ApplicationHelper
 
   def show_page_bottom_links(model)
     out = tag('br')
-    out << back_button_link
+    out << back_button_link(model.class)
     out << " "
     out << edit_button_link(model)
     return out

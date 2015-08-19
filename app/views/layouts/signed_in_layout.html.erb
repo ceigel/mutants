@@ -2,16 +2,13 @@
   <div class ="row">
     <aside id="sidebar" class="hidden-xs hidden-sm col-sm-3">
       <section>
-        <h3>
-          <%= current_mutant.name %>
-        </h3>
-      </section>
       <h4>Teams</h4>
       <ul class="nav nav-pills nav-stacked">
         <% Team.all.each do |team| %>
           <li><%= link_to team.name, team %></li>
       <% end %>
       </ul>
+      </section>
       <section>
         <h4>Tasks</h4>
         <ul class="nav nav-pills nav-stacked">
