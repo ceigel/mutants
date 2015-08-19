@@ -8,7 +8,7 @@
 
   <%= content_tag :tbody, data: {type: table_type} do %>
     <% mutants.each do |mutant| %>
-      <%= render partial: 'mutant', locals: {mutant: mutant, link_creator: link_creator} %>
+      <%= render partial: 'members/mutant', locals: {mutant: mutant, link_creator: link_creator} %>
     <% end %>
   <% end %>
 </table>

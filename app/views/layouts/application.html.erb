@@ -15,7 +15,7 @@
         <%= render 'layouts/messages' %>
       </div>
       <div id='content'>
-        <%= yield %>
+        <%= content_for?(:content) ? yield(:content) : yield %>
       </div>
     </div>
   </body>

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_devise_parameters, if: :devise_controller?
+  layout :layout_by_resource
 
   rescue_from CanCan::AccessDenied do |exception|
     back = session[:return_to] || request.referer
@@ -14,5 +15,13 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :password, :password_confirmation, :remember_me) }
       devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :name, :password, :remember_me) }
       devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :password, :password_confirmation, :current_password) }
+    end
+
+    def layout_by_resource
+      if !devise_controller?
+        "signed_in_layout"
+      else
+        "application"
+      end
     end
 end

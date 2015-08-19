@@ -14,6 +14,6 @@ Rails.application.routes.draw do
     end
 
     resources :mutants, except: [:create, :new]
-    root to: 'mutants#index', :as => :user_root
+    root to: 'mutants#home', :as => :user_root
   end
 end

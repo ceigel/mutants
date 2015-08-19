@@ -10,6 +10,12 @@ class MutantsController < ApplicationController
   def show
   end
 
+  def home
+    @mutant = current_mutant
+    @teams = @mutant.teams
+    @tasks = @mutant.tasks
+  end
+
   def edit
   end
 

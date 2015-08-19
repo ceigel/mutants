@@ -8,7 +8,10 @@
   </div>
 
   <div class='col-sm-4'>
-    <%= render "tasks_list" %>
+    <%= render partial: 'tasks_list', locals: {tasks: @team.tasks} %>
+    <% if can? :create, Task %>
+      <%= button_link 'Add task',  new_team_task_path(@team), 'btn-info' %>
+    <% end %>
   </div>
 
   <div class='col-sm-5'>
