@@ -43,5 +43,13 @@ RSpec.describe Mutant, type: :model do
       mutant.reload
       expect(mutant.teams).to be_empty
     end
+    describe 'teams tasks' do
+      let!(:task) { FactoryGirl.create(:task, team: team) }
+
+      it 'imports the tasks from the team' do
+        expect(mutant.tasks).to eq [task]
+      end
+    end
+
   end
 end
