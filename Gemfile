@@ -19,6 +19,9 @@ gem 'pg'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'web-console', '~> 2.0'
+end
+
+group :test do
   gem 'launchy'
 end
 
