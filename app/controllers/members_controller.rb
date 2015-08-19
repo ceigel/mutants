@@ -2,9 +2,11 @@ class MembersController < ApplicationController
   include MembersHelper
   include ApplicationHelper
   include ActionView::Helpers::UrlHelper
-  before_filter :authenticate_mutant!
 
+  before_filter :authenticate_mutant!
   before_action :set_team
+  before_action :authorize
+
   respond_to :html, :js
 
   def edit
@@ -29,5 +31,9 @@ class MembersController < ApplicationController
   private
     def set_team
       @team = Team.find(params[:team_id])
+    end
+
+    def authorize
+      authorize! params[:action].to_sym, :members_list
     end
 end

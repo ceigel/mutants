@@ -1,5 +1,6 @@
 module ApplicationHelper
   def new_button_link(model_class)
+    return unless can? :create, model_class
     model_name = model_class.model_name
     button_link("New #{model_name.name}", new_polymorphic_path(model_name.element), 'btn-info')
   end
@@ -36,6 +37,7 @@ module ApplicationHelper
 
   private
     def edit_button_link(model, *parents)
+      return "" unless can? :update, model
       name = content_tag(:span, '', class: "glyphicon glyphicon-pencil")
       button_link(name, edit_polymorphic_path([*parents, model]), 'btn-success')
     end
@@ -45,6 +47,7 @@ module ApplicationHelper
     end
 
     def destroy_button_link(model, *parents)
+      return "" unless can? :destroy, model
       name = content_tag(:span, '', class: "glyphicon glyphicon-trash")
       button_link(name, [*parents, model], 'btn-danger', method: :delete, data: { confirm: 'Are you sure?' })
     end

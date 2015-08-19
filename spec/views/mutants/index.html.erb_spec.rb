@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'support/current_user_stub'
 
 RSpec.describe "mutants/index", type: :view do
   before(:each) do

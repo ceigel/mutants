@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_filter :authenticate_mutant!
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   respond_to :html
 

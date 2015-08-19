@@ -4,7 +4,7 @@ FactoryGirl.define do
     password "q1w2e3r4"
 
     trait :admin do
-      sequence(:name) { |n| "Admin #{n}"}
+      admin true
     end
   end
 end

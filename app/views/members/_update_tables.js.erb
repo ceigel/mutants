@@ -1,2 +1,3 @@
+<%= render 'shared/refresh_messages' %>
 $("#<%= dom_id(@member) %>").remove();
 $("[data-type='<%= @table_to_add %>']").append('<%= escape_javascript(render partial: 'mutant', locals: {mutant: @member, link_creator: @link_creator}) %>');
