@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150818151402) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "mutants", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",                             null: false
@@ -29,16 +32,16 @@ ActiveRecord::Schema.define(version: 20150818151402) do
     t.boolean  "admin",                  default: false
   end
 
-  add_index "mutants", ["name"], name: "index_mutants_on_name"
-  add_index "mutants", ["reset_password_token"], name: "index_mutants_on_reset_password_token", unique: true
+  add_index "mutants", ["name"], name: "index_mutants_on_name", using: :btree
+  add_index "mutants", ["reset_password_token"], name: "index_mutants_on_reset_password_token", unique: true, using: :btree
 
   create_table "mutants_teams", id: false, force: :cascade do |t|
     t.integer "team_id"
     t.integer "mutant_id"
   end
 
-  add_index "mutants_teams", ["mutant_id"], name: "index_mutants_teams_on_mutant_id"
-  add_index "mutants_teams", ["team_id"], name: "index_mutants_teams_on_team_id"
+  add_index "mutants_teams", ["mutant_id"], name: "index_mutants_teams_on_mutant_id", using: :btree
+  add_index "mutants_teams", ["team_id"], name: "index_mutants_teams_on_team_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
@@ -47,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150818151402) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "tasks", ["team_id"], name: "index_tasks_on_team_id"
+  add_index "tasks", ["team_id"], name: "index_tasks_on_team_id", using: :btree
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
@@ -55,6 +58,7 @@ ActiveRecord::Schema.define(version: 20150818151402) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "teams", ["name"], name: "index_teams_on_name"
+  add_index "teams", ["name"], name: "index_teams_on_name", using: :btree
 
+  add_foreign_key "tasks", "teams"
 end
